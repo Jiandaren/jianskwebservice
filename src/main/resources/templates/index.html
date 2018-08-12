@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to Jiansk's Amazing Space!</h1>
+    <!--navbar-->
+    <nav class="navbar navbar-fixed-top bg-primary" style="margin:0">
+        <div class="container">
+            <a class="navbar-brand" style="color:#ffffff" href="/">Jiansk's Amazing Space!</a>
+            <div class="navbar-form navbar-right">
+                <a class="btn btn-danger" th:href="@{/user}" th:if="${#httpServletRequest.remoteUser}"></a>
+                <a class="btn" style="color:#ffffff" th:href="@{/login}" th:unless="${#httpServletRequest.remoteUser}">Log In</a>
+                <a class="btn" style="color:#ffffff" th:href="@{/regist}" th:unless="${#httpServletRequest.remoteUser}">Create Account</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--footer-->
+    <footer class="container" style="background-color:#f7f7f7;height: 80px; width:100%; bottom: 0; margin: 0; position: absolute">
+        <div class="container-fluid">
+            <p style="margin: 30px auto;text-align: center">Designed and built with all the love in the world by @Jiansk.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
