@@ -15,8 +15,8 @@
             <a class="navbar-brand" style="color:#ffffff" href="/">Jiansk's Amazing Space!</a>
             <div class="navbar-form navbar-right">
                 <a class="btn btn-danger" th:href="@{/user}" th:if="${#httpServletRequest.remoteUser}"></a>
-                <a class="btn" style="color:#ffffff" th:href="@{/login}" th:unless="${#httpServletRequest.remoteUser}">Log In</a>
-                <a class="btn" style="color:#ffffff" th:href="@{/regist}" th:unless="${#httpServletRequest.remoteUser}">Create Account</a>
+                <a class="btn" style="color:#ffffff" th:href="@{/home/login}" th:unless="${#httpServletRequest.remoteUser}">Log In</a>
+                <a class="btn" style="color:#ffffff" th:href="@{/home/regist}" th:unless="${#httpServletRequest.remoteUser}">Create Account</a>
             </div>
         </div>
     </nav>

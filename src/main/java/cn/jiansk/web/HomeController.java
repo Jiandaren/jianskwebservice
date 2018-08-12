@@ -20,9 +20,13 @@ public class HomeController {
         return "index";
     }
 
-
-    @GetMapping("/login")
+    @GetMapping("/home/login")
     public String login(){
         return "/home/login";
+    }
+
+    @GetMapping("/home/regist")
+    public String regist(){
+        return "/home/regist";
     }
 }
