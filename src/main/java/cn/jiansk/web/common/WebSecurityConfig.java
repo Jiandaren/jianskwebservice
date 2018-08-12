@@ -21,22 +21,29 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withDefaultPasswordEncoder().username("600010").password("123qwe").roles("ADMIN").build());
-        return manager;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                        .antMatchers("/index", "/static/**").permitAll()
+                        .antMatchers("/").permitAll()
                         .anyRequest().authenticated()
                         .and()
                 .formLogin()
-                        .loginPage("/index")
-                        .permitAll();
+                        .loginPage("/login").defaultSuccessUrl("/user")
+                        .and()
+                .logout()
+                        .logoutUrl("/logout").logoutSuccessUrl("/login");
+    }
+
+    /**
+     * 在内存中创建一个名为 "user" 的用户，密码为 "pwd"，拥有 "USER" 权限
+     */
+    @Bean
+    @Override
+    protected UserDetailsService userDetailsService() {
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(users.username("user").password("pwd").roles("USER").build());
+        return manager;
     }
 }

@@ -12,9 +12,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 开发时间：2018-08-04 16:34
  * 修改记录：程序版本    修改日期    修改人员    修改单号    修改说明
  *********************************************************/
-public class JianskwebserviceServletInitializer extends SpringBootServletInitializer {
+public class ServletInitializer extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(JianskwebserviceApplication.class);
+        return builder.sources(Application.class);
     }
 }
